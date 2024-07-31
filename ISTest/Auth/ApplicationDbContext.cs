@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿/*using Microsoft.AspNetCore.Identity;
 using System.Reflection.Emit;
 
 namespace ISTest
@@ -6,7 +6,7 @@ namespace ISTest
     public class ApplicationDbContext
     {
     }
-}
+}*/
 
 //+++++++++++
 
@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace ISTest
+namespace ISTest.Auth
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
