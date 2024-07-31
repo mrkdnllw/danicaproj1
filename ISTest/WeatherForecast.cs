@@ -1,10 +1,11 @@
+using ISTest.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ISTest
 {
-    [Authorize]
-    //[Authorize(Roles = UserRoles.Admin)]
+    //[Authorize]
+    [Authorize(Roles = UserRoles.Admin)]
     [ApiController]
     [Route("api/[controller]")]
     public class WeatherForecast

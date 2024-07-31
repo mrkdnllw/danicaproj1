@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using MySqlConnector;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -12,9 +13,23 @@ ConfigurationManager configuration = builder.Configuration;
 
 
 
-var connectionString = builder.Configuration.GetConnectionString("Conn1") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+/*var connectionString = builder.Configuration.GetConnectionString("Conn1") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+*/
+
+//var connectionString = builder.Configuration.GetConnectionString("ConnMySQL") ?? throw new InvalidOperationException("Connection string 'ConnMySQL' not found.");
+
+
+// Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseMySql(builder.Configuration.GetConnectionString("ConnMySQL"),
+    new MySqlServerVersion(new Version(8, 0, 21))));
+
+
+
+
+/*
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));*/
 /*
 // For Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ConnStr")));*/
